@@ -3,9 +3,12 @@ const app = express();
 const path = require("path");
 const http = require("http");
 const { Server } = require("socket.io");
+const cors = require("cors");  // Add this line
 
 const server = http.createServer(app);
 const io = new Server(server);
+
+app.use(cors());
 
 // Serve static files from the "images" directory
 app.use("/images", express.static(path.join(__dirname, "images")));
